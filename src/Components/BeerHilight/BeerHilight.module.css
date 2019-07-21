@@ -1,17 +1,10 @@
 .beerHilight{
     border: 1px solid grey;
+    padding: 1rem;
 }
 
 .favoriteWrapper{
     text-align: right;
-}
-
-.beer{
-    display: flex;
-}
-
-.beerImage{
-    width: 20%;
 }
 
 .favoriteIcon{
@@ -23,4 +16,30 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.beer{
+    display: flex;
+}
+
+.beerImage{
+    width: 20%;
+}
+
+.beerHilightDetails{
+    width: 100%;
+    text-align: center;
+    padding: 0 1rem;
+
+}
+
+.beerName{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.beerDescription{
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-top: 1rem;
 }
