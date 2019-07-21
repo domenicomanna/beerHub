@@ -1,6 +1,14 @@
 .beerHilight{
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     padding: 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+@media(hover: hover) and (pointer: fine){
+    .beerHilight:hover{
+        background: #ccc;
+    }
 }
 
 .favoriteWrapper{
@@ -16,6 +24,7 @@
     border: none;
     outline: none;
     cursor: pointer;
+    background: inherit;
 }
 
 .beer{
