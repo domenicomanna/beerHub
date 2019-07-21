@@ -1,0 +1,25 @@
+.header{
+    display: flex;
+    justify-content: space-between;   
+    align-items: center; 
+    background: green;
+    padding: 0 .5rem;
+}
+
+.navigation{
+    display: flex;
+    list-style: none;
+}
+
+.active{
+    cursor: pointer;
+    padding: .7rem 1rem;
+    transition: .3s;
+    border-radius: 5px;
+}
+
+@media (hover: hover) and (pointer: fine){
+    .active:hover{
+        background: orange;
+    }
+}
