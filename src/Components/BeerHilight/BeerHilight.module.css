@@ -1,0 +1,21 @@
+.favoriteWrapper{
+    text-align: right;
+}
+.beerHilight{
+    display: flex;
+}
+
+.beerImage{
+    width: 10%;
+}
+
+.favoriteIcon{
+    font-size: 1.2rem;
+    color: blue;
+}
+
+.button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
