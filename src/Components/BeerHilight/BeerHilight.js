@@ -7,13 +7,13 @@ const BeerHilight = (props) => {
     // let buttonClasses = `fas fa-star ${styles.blue}`
 
     return (
-        <div>
+        <div className = {styles.beerHilight}>
             <div className={styles.favoriteWrapper}>
                 <button className={styles.button}>
                     <i class={`far fa-star ${styles.favoriteIcon}`}/>
                 </button>
             </div>
-            <div className={styles.beerHilight}>
+            <div className={styles.beer}>
                 <img className={styles.beerImage} src={props.imageUrl}/>
                 <div className={styles.beerHilightDescription}>
                     <p>{props.beerName}</p>

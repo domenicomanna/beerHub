@@ -1,12 +1,17 @@
+.beerHilight{
+    border: 1px solid grey;
+}
+
 .favoriteWrapper{
     text-align: right;
 }
-.beerHilight{
+
+.beer{
     display: flex;
 }
 
 .beerImage{
-    width: 10%;
+    width: 20%;
 }
 
 .favoriteIcon{

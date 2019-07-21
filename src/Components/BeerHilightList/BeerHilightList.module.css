@@ -1,0 +1,16 @@
+.beerList{
+    display: grid;
+    grid-template-columns: 1fr ;
+}
+
+@media (min-width: 768px){
+    .beerList{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1000px){
+    .beerList{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
