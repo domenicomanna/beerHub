@@ -1,14 +1,23 @@
+.navigation{
+    background: #a89344;
+    color: white;
+}
+
 .header{
     display: flex;
     justify-content: space-between;   
     align-items: center; 
-    background: green;
     padding: 0 .5rem;
 }
 
-.navigation{
+.company{
+    font-size: 1.7rem;
+}
+
+.navigationList{
     display: flex;
     list-style: none;
+    font-size: 1.2rem;
 }
 
 .active{
@@ -20,6 +29,6 @@
 
 @media (hover: hover) and (pointer: fine){
     .active:hover{
-        background: orange;
+        color: #e5e5e5;        
     }
 }
