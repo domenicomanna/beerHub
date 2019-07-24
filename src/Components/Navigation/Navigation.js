@@ -3,9 +3,9 @@ import styles from './Navigation.module.css';
 import Wrapper from '../Wrapper/Wrapper';
 const Navigation = () => {
     return (
-        <div className={styles.navigation}>
+        <header className={styles.header}>
             <Wrapper>
-                <header className={styles.header}>
+                <div className={styles.navigation}>
                     <h2 className={styles.company}> BeerHub</h2>
                     <nav>
                         <ul className={styles.navigationList}>
@@ -13,9 +13,9 @@ const Navigation = () => {
                             <li> <a className={styles.active}> Home </a> </li>
                         </ul>
                     </nav>
-                </header>
+                </div>
             </Wrapper>
-        </div>
+        </header>
     );
 }
 

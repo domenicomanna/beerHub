@@ -1,13 +1,13 @@
 .navigation{
-    background: #a89344;
-    color: white;
-}
-
-.header{
     display: flex;
     justify-content: space-between;   
     align-items: center; 
     padding: 0 .5rem;
+}
+
+.header{
+    background: #a89344;
+    color: white;
 }
 
 .company{
