@@ -1,0 +1,30 @@
+.inputWrapper{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.beerInput{
+    width: 100%;
+    padding: .9rem;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    transition: .2s;
+}
+
+.beerInput::placeholder{
+    font-size: 1.2rem;
+}
+
+@media(hover: hover) and (pointer: fine){
+    .beerInput:hover{
+        border-color: #a3a3a3;
+    }
+
+    .beerInput:focus{
+        border-color: #00aff2;
+    }
+}
