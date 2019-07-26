@@ -1,0 +1,48 @@
+.fullBeer{
+    display: flex;
+    font-size: 1.5rem;
+    margin-top: 4rem;
+    line-height: 1.4;
+}
+
+.imageWrapper{
+    flex: 1;
+}
+
+.image{
+    width: 70%;
+}
+
+.beerDetails{
+    flex: 4;
+}
+
+.beerName{
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.foodPairings{
+    padding: 0 2.5rem;
+    list-style-type: circle
+}
+
+.label{
+    font-weight: bold;
+    display: block;
+    margin-bottom: .85rem;
+    font-size: 1.65rem;
+}
+
+.description,
+.foodPairings,
+.brewerTips{
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+}
+
+@media(min-width: 768px){
+
+}
