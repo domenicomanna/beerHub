@@ -1,48 +1,76 @@
 .fullBeer{
-    display: flex;
-    font-size: 1.5rem;
-    margin-top: 4rem;
+    font-size: 1.3rem;
+    margin-top: 2rem;
     line-height: 1.4;
 }
 
 .imageWrapper{
-    flex: 1;
-}
-
-.image{
-    width: 70%;
-}
-
-.beerDetails{
-    flex: 4;
-}
-
-.beerName{
-    font-size: 3rem;
     text-align: center;
-    margin-top: 0;
     margin-bottom: 2rem;
 }
 
-.foodPairings{
-    padding: 0 2.5rem;
+.image{
+    width: 20%;
+}
+
+.beerName{
+    font-size: 2.7rem;
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.foodPairings ul{
+    padding: 0 2rem;
     list-style-type: circle
 }
 
 .label{
     font-weight: bold;
     display: block;
-    margin-bottom: .85rem;
-    font-size: 1.65rem;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
 }
 
-.description,
-.foodPairings,
-.brewerTips{
-    margin-top: 0;
-    margin-bottom: 2.5rem;
+.description p,
+.foodPairings ul,
+.brewerTips p{
+    margin: 0 0 2.5rem 0;
 }
 
 @media(min-width: 768px){
+    .fullBeer{
+        margin-top: 4rem;
+        display: grid;
+        grid-template-areas: 
+            "image name"
+            "image description"
+            "image food-pairings"
+            "image brewer-tips"
+    }
 
+    .beerName{
+        grid-area: name;
+        margin-bottom: 1rem;
+    }
+
+    .imageWrapper{
+        grid-area: image;
+        text-align: initial;
+    }
+
+    .foodPairings{
+        grid-area: food-pairings;
+    }
+
+    .brewerTips{
+        grid-area: brewer-tips;
+    }
+
+    .image{
+        width: 50%;
+    }
+
+    .label{
+        font-size: 1.7rem;
+    }  
 }

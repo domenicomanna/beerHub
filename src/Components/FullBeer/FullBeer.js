@@ -6,23 +6,30 @@ const FullBeer = (props) => {
     return (
         <Wrapper>
             <div className={styles.fullBeer}>
+
+                <h2 className={styles.beerName}>{props.name}</h2>
+
                 <div className={styles.imageWrapper}>
                     <img className={styles.image} src={props.imageUrl}></img>
                 </div>
-                <div className={styles.beerDetails}>
-                    <h2 className={styles.beerName}>{props.name}</h2>
 
+                <div className = {styles.description}>
                     <span className={styles.label}>Description:</span>
-                    <p className={styles.description}>{props.description}</p>
+                    <p>{props.description}</p>
+                </div>
 
+                <div className = {styles.foodPairings}>
                     <span className={styles.label}>Food Pairings: </span>
-                    <ul className={styles.foodPairings}>
+                    <ul>
                         {getFoodPairings(props.foodPairings)}
                     </ul>
-
-                    <span className={styles.label}> Brewer Tips: </span>
-                    <p className={styles.brewerTips}>{props.brewerTips}</p>
                 </div>
+
+                <div className = {styles.brewerTips}>
+                    <span className={styles.label}> Brewer Tips: </span>
+                    <p>{props.brewerTips}</p>
+                </div>
+
             </div>
         </Wrapper>
     );
