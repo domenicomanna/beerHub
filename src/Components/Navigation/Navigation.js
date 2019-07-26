@@ -10,7 +10,6 @@ const Navigation = () => {
                     <nav>
                         <ul className={styles.navigationList}>
                             <li> <a className={styles.active}> Home </a> </li>
-                            <li> <a className={styles.active}> Home </a> </li>
                         </ul>
                     </nav>
                 </div>

@@ -1,22 +1,25 @@
+.header{
+    background: #a89344;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
 .navigation{
     display: flex;
     justify-content: space-between;   
     align-items: center; 
 }
 
-.header{
-    background: #a89344;
-    color: white;
-}
-
 .company{
-    font-size: 1.7rem;
+    font-size: 2rem;
+    margin: 1rem;
 }
 
 .navigationList{
     display: flex;
     list-style: none;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .active{
