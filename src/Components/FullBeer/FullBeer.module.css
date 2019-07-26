@@ -55,7 +55,6 @@
 
     .imageWrapper{
         grid-area: image;
-        text-align: initial;
     }
 
     .foodPairings{
@@ -73,4 +72,10 @@
     .label{
         font-size: 1.7rem;
     }  
+}
+
+@media(min-width: 1250px){
+    .imageWrapper{
+        text-align: initial;
+    }
 }
