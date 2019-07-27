@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import debounce from 'lodash.debounce';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
@@ -12,45 +13,63 @@ class BeerContainer extends Component {
     state = {
         hasError: false,
         hasMoreBeers: true,
-        loading: false,
+        isLoading: false,
         pageNumber: 1,
-        beers: [],
+        beersFromCatalog: [],
+        beersSearchedByName: [],
     }
 
-    componentDidMount(){
-        this.handleBeerLoading();
+    componentDidMount() {
+        this.handleBeerCatalogLoading();
+
+        window.onscroll = debounce(() => {
+
+            const {hasError, isLoading, hasMoreBeers} = this.state;
+
+            if (hasError || isLoading || !hasMoreBeers) return;
+
+            if (window.innerHeight + document.documentElement.scrollTop + 100
+                >= document.documentElement.offsetHeight) {
+                this.handleBeerCatalogLoading();
+            }
+        }, 100)
     }
 
-    async handleBeerLoading(){
-        this.setState({loading: true});
+    async handleBeerCatalogLoading() {
+        this.setState({
+            isLoading: true,
+            beersSearchedByName: []
+        });
 
-        try{
+        try {
             let beers = await this.punkBeerClient.getAllBeers(this.state.pageNumber);
 
-            if (beers.length < 25) this.setState({hasMoreBeers: false});
+            if (beers.length < 25) this.setState({ hasMoreBeers: false });
 
             else this.setState(previousState => {
-                return  {pageNumber : previousState.pageNumber + 1};
+                return {
+                    pageNumber: previousState.pageNumber + 1,
+                    hasMoreBeers: true
+                };
             })
 
             this.setState(previousState => {
-                return {beers: [...previousState.beers, ...beers]};
+                return { beersFromCatalog: [...previousState.beersFromCatalog, ...beers] };
             })
         }
 
-        catch(error){
-            this.setState({hasError: true});
+        catch (error) {
+            this.setState({ hasError: true });
         }
-        
-        finally{
-            this.setState({loading: false});
+
+        finally {
+            this.setState({ isLoading: false });
         }
     }
 
     render() {
-        let loader = this.state.loading ? <p>LOADING</p> : null;
-        console.log(this.state);
-        
+        let loader = this.state.isLoading ? <p>LOADING</p> : null;
+
 
         return (
             <Fragment>
@@ -60,7 +79,7 @@ class BeerContainer extends Component {
                 </Wrapper>
 
                 <Wrapper>
-                    <BeerHilightList beers = {this.state.beers}/>
+                    <BeerHilightList beers={this.state.beersFromCatalog} />
                 </Wrapper>
 
                 <Wrapper>
