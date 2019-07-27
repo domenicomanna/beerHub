@@ -3,6 +3,7 @@
     padding: 1rem;
     cursor: pointer;
     transition: .3s;
+    word-wrap: break-word;
 }
 
 @media(hover: hover) and (pointer: fine){
