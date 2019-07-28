@@ -28,7 +28,7 @@ class BeerContainer extends Component {
 
             if (hasError || isLoading || !hasMoreBeers) return;
 
-            if (window.innerHeight + document.documentElement.scrollTop + 100
+            if (window.innerHeight + document.documentElement.scrollTop + 1000
                 >= document.documentElement.offsetHeight) {
                 this.handleBeerCatalogLoading();
             }
