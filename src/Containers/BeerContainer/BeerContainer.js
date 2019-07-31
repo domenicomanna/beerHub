@@ -8,34 +8,6 @@ import PunkBeerClient from '../../punkBeerClient';
 
 class BeerContainer extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.getBeersByName = debounce(this.getBeersByName, 800);
-
-        window.onscroll = debounce(() => {
-            const { hasError, isLoading, hasMoreBeers } = this.state;
-
-            if (hasError || isLoading || !hasMoreBeers) return;
-
-            if (window.innerHeight + document.documentElement.scrollTop + 1000
-                >= document.documentElement.offsetHeight) {
-                this.determineWhichBeersToLoad();
-            }
-        }, 100)
-    }
-
-    determineWhichBeersToLoad = () => {
-        const { beerNameToSearch } = this.state;
-
-        if (beerNameToSearch === '') {
-            this.handleBeerCatalogLoading();
-            return;
-        }
-
-        this.getBeersByName(beerNameToSearch);
-    }
-
     punkBeerClient = new PunkBeerClient();
 
     state = {
@@ -47,16 +19,45 @@ class BeerContainer extends Component {
         beers: []
     }
 
-    componentDidMount() {
-        this.handleBeerCatalogLoading();
+    constructor(props) {
+        super(props)
+        this.loadBeersByName = debounce(this.loadBeersByName, 800);
+        window.onscroll = debounce(this.handleBottomOfPageScroll, 100)
     }
 
-    async handleBeerCatalogLoading() {
+    handleBottomOfPageScroll = () => {
+        const { hasError, isLoading, hasMoreBeers } = this.state;
+
+        if (hasError || isLoading || !hasMoreBeers) return;
+
+        if (window.innerHeight + document.documentElement.scrollTop + 1000
+            >= document.documentElement.offsetHeight) {
+            this.determineWhichBeersToLoad();
+        }
+    }
+
+    determineWhichBeersToLoad = () => {
+        const { beerNameToSearch } = this.state;
+
+        // if true, the search bar must be empty
+        if (beerNameToSearch === '') {
+            this.loadBeersFromCatalog();
+            return;
+        }
+
+        this.loadBeersByName(beerNameToSearch);
+    }
+
+    componentDidMount() {
+        this.loadBeersFromCatalog();
+    }
+
+    async loadBeersFromCatalog() {
         this.setState({ isLoading: true });
 
         try {
             let beers = await this.punkBeerClient.getAllBeers(this.state.nextPageToQuery);
-            this.updateStateFromBeerData(beers);
+            this.updateStateWithNewBeers(beers);
         }
 
         catch (error) {
@@ -68,27 +69,20 @@ class BeerContainer extends Component {
         }
     }
 
-    handleBeerNameSearch = (event) => {
-        let beerName = event.target.value;
-
+    handleBeerNameChange = (event) => {
+        // Reset the state 
         this.setState({
             beerNameToSearch: event.target.value,
             beers: [],
             nextPageToQuery: 1,
             isLoading: true
-        }, () => {
-            if (beerName === '') {
-                this.handleBeerCatalogLoading();
-                return;
-            }
-            this.getBeersByName(beerName)
-        })
+        }, this.determineWhichBeersToLoad);
     }
 
-    async getBeersByName(beerName) {
+    async loadBeersByName(beerName) {
         try {
             let beers = await this.punkBeerClient.getBeersByName(beerName, this.state.nextPageToQuery);
-            this.updateStateFromBeerData(beers);
+            this.updateStateWithNewBeers(beers);
         }
 
         catch (error) {
@@ -100,7 +94,7 @@ class BeerContainer extends Component {
         }
     }
 
-    updateStateFromBeerData = (beers) => {
+    updateStateWithNewBeers = (beers) => {
         if (beers.length < 25) this.setState({ hasMoreBeers: false });
 
         else this.setState(currentState => {
@@ -118,12 +112,11 @@ class BeerContainer extends Component {
     render() {
         let loader = this.state.isLoading ? <p>LOADING</p> : null;
 
-
         return (
             <Fragment>
 
                 <Wrapper>
-                    <SearchBar handleInputChange={this.handleBeerNameSearch} />
+                    <SearchBar handleInputChange={this.handleBeerNameChange} />
                 </Wrapper>
 
                 <Wrapper>
