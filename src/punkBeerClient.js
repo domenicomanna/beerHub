@@ -10,9 +10,9 @@ class PunkBeerClient{
     }
 
     // beerName -> The name of the beers to search for
-    getBeersByName(beerName){
+    getBeersByName(beerName, pageNumber){
         beerName = encodeURI(beerName);
-        let fullUrl = `${baseUrl}?beer_name=${beerName}`;
+        let fullUrl = `${baseUrl}?beer_name=${beerName}&page=${pageNumber}`;
         return getJsonDataFrom(fullUrl);
     }
 }
