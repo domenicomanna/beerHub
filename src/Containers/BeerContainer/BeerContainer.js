@@ -43,7 +43,7 @@ class BeerContainer extends Component {
         hasMoreBeers: true,
         beerNameToSearch: '',
         isLoading: false,
-        pageNumberToQuery: 1,
+        nextPageToQuery: 1,
         beers: []
     }
 
@@ -52,25 +52,11 @@ class BeerContainer extends Component {
     }
 
     async handleBeerCatalogLoading() {
-        this.setState({
-            isLoading: true
-        });
+        this.setState({ isLoading: true });
 
         try {
-            let beers = await this.punkBeerClient.getAllBeers(this.state.pageNumberToQuery);
-
-            if (beers.length < 25) this.setState({ hasMoreBeers: false });
-
-            else this.setState(currentState => {
-                return {
-                    pageNumberToQuery: currentState.pageNumberToQuery + 1,
-                    hasMoreBeers: true
-                };
-            })
-
-            this.setState(currentState => {
-                return { beers: [...currentState.beers, ...beers] };
-            })
+            let beers = await this.punkBeerClient.getAllBeers(this.state.nextPageToQuery);
+            this.updateStateFromBeerData(beers);
         }
 
         catch (error) {
@@ -88,34 +74,21 @@ class BeerContainer extends Component {
         this.setState({
             beerNameToSearch: event.target.value,
             beers: [],
-            pageNumberToQuery: 1,
+            nextPageToQuery: 1,
             isLoading: true
         }, () => {
             if (beerName === '') {
                 this.handleBeerCatalogLoading();
                 return;
             }
-            console.log(this.state);
             this.getBeersByName(beerName)
         })
     }
 
     async getBeersByName(beerName) {
         try {
-            let beers = await this.punkBeerClient.getBeersByName(beerName, this.state.pageNumberToQuery);
-
-            if (beers.length < 25) this.setState({ hasMoreBeers: false });
-
-            else this.setState(currentState => {
-                return {
-                    pageNumberToQuery: currentState.pageNumberToQuery + 1,
-                    hasMoreBeers: true
-                };
-            })
-
-            this.setState(previousState => {
-                return { beers: [...previousState.beers, ...beers] };
-            })
+            let beers = await this.punkBeerClient.getBeersByName(beerName, this.state.nextPageToQuery);
+            this.updateStateFromBeerData(beers);
         }
 
         catch (error) {
@@ -125,6 +98,21 @@ class BeerContainer extends Component {
         finally {
             this.setState({ isLoading: false });
         }
+    }
+
+    updateStateFromBeerData = (beers) => {
+        if (beers.length < 25) this.setState({ hasMoreBeers: false });
+
+        else this.setState(currentState => {
+            return {
+                nextPageToQuery: currentState.nextPageToQuery + 1,
+                hasMoreBeers: true
+            };
+        })
+
+        this.setState(currentState => {
+            return { beers: [...currentState.beers, ...beers] };
+        })
     }
 
     render() {
