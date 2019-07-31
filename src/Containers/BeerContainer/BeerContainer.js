@@ -3,6 +3,7 @@ import debounce from 'lodash.debounce';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
+import Loader from '../../Components/Loader/Loader';
 
 import PunkBeerClient from '../../punkBeerClient';
 
@@ -14,7 +15,7 @@ class BeerContainer extends Component {
         hasError: false,
         hasMoreBeers: true,
         beerNameToSearch: '',
-        isLoading: false,
+        isLoading: true,
         nextPageToQuery: 1,
         beers: []
     }
@@ -110,7 +111,7 @@ class BeerContainer extends Component {
     }
 
     render() {
-        let loader = this.state.isLoading ? <p>LOADING</p> : null;
+        let loader = this.state.isLoading ? <Loader/> : null;
 
         return (
             <Fragment>

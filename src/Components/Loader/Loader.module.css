@@ -1,0 +1,21 @@
+.loaderWrapper{
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.loader{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 16px solid #fff;
+    border-top-color: #b7b7b7;
+    animation: spin .4s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform: rotate(360deg);
+    }
+}
