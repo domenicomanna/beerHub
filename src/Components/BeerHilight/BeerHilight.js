@@ -5,13 +5,14 @@ const BeerHilight = (props) => {
     // solid star color <i class="fas fa-star"></i>
     // outlined star color <i class="far fa-star"></i>
     // let buttonClasses = `fas fa-star ${styles.blue}`
+    let favoritedState = props.isFavorited ? "fas fa-star" : "far fa-star";
 
     return (
         <div className={styles.beerHilight}>
 
             <div className={styles.favoriteWrapper}>
-                <button className={styles.button}>
-                    <i className={`far fa-star ${styles.favoriteIcon}`} />
+                <button onClick = {props.toggleFavorite} className={styles.button}>
+                    <i className={`${favoritedState} ${styles.favoriteIcon}`} />
                 </button>
             </div>
 

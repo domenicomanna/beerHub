@@ -8,19 +8,21 @@ const BeerHilightList = (props) => {
     return (
         <Wrapper>
             <div className={styles.beerList}>
-                {transformBeers(props.beers)}
+                {transformBeers(props)}
             </div>
         </Wrapper>
     );
 }
 
-function transformBeers(beers) {
-    return beers.map(beer => (
+function transformBeers(props) {
+    return props.beers.map( (beer,index) => (
         <BeerHilight
             key={beer.id}
             name={beer.name}
             description={shortenLength(beer.description, 25)}
-            image={beer.image_url} />
+            image={beer.image_url}
+            isFavorited = {beer.isFavorited === undefined ? false : beer.isFavorited} 
+            toggleFavorite = {e => props.toggleFavorite(index)}/>
     ));
 
 }

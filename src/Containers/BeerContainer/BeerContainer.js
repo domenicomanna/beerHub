@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import debounce from 'lodash.debounce';
+import clonedeep from 'lodash.clonedeep';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
@@ -17,7 +18,8 @@ class BeerContainer extends Component {
         beerNameToSearch: '',
         isLoading: true,
         nextPageToQuery: 1,
-        beers: []
+        beers: [],
+        favoritedBeers: new Map()
     }
 
     constructor(props) {
@@ -58,7 +60,7 @@ class BeerContainer extends Component {
 
         try {
             let beers = await this.punkBeerClient.getAllBeers(this.state.nextPageToQuery);
-            this.updateStateWithNewBeers(beers);
+            this.updateStateWithLoadedBeers(beers);
         }
 
         catch (error) {
@@ -83,7 +85,7 @@ class BeerContainer extends Component {
     async loadBeersByName(beerName) {
         try {
             let beers = await this.punkBeerClient.getBeersByName(beerName, this.state.nextPageToQuery);
-            this.updateStateWithNewBeers(beers);
+            this.updateStateWithLoadedBeers(beers);
         }
 
         catch (error) {
@@ -95,7 +97,7 @@ class BeerContainer extends Component {
         }
     }
 
-    updateStateWithNewBeers = (beers) => {
+    updateStateWithLoadedBeers = (beers) => {
         if (beers.length < 25) this.setState({ hasMoreBeers: false });
 
         else this.setState(currentState => {
@@ -110,8 +112,26 @@ class BeerContainer extends Component {
         })
     }
 
+    handleToggleFavorite = (index) => {
+        let beer = clonedeep(this.state.beers[index]);
+        let favoritedBeers = clonedeep(this.state.favoritedBeers);
+        let originalBeers = clonedeep(this.state.beers);
+
+        beer.isFavorited = beer.isFavorited === undefined ? true : !beer.isFavorited;
+
+        if (beer.isFavorited) favoritedBeers.set(beer.id, beer);
+        else favoritedBeers.delete(beer.id);
+
+        originalBeers[index] = beer;
+
+        this.setState({
+            beers: originalBeers,
+            favoritedBeers: favoritedBeers
+        })
+    }
+
     render() {
-        let loader = this.state.isLoading ? <Loader/> : null;
+        let loader = this.state.isLoading ? <Loader /> : null;
 
         return (
             <Fragment>
@@ -121,7 +141,8 @@ class BeerContainer extends Component {
                 </Wrapper>
 
                 <Wrapper>
-                    <BeerHilightList beers={this.state.beers} />
+                    <BeerHilightList beers={this.state.beers}
+                        toggleFavorite={this.handleToggleFavorite} />
                 </Wrapper>
 
                 <Wrapper>
