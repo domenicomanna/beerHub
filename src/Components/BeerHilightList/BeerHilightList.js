@@ -21,7 +21,7 @@ function transformBeers(props) {
             name={beer.name}
             description={shortenLength(beer.description, 25)}
             image={beer.image_url}
-            isFavorited = {beer.isFavorited === undefined ? false : beer.isFavorited} 
+            isFavorited = {beer.isFavorited} 
             toggleFavorite = {e => props.toggleFavorite(index)}/>
     ));
 

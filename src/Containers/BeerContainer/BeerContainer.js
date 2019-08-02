@@ -60,6 +60,7 @@ class BeerContainer extends Component {
 
         try {
             let beers = await this.punkBeerClient.getAllBeers(this.state.nextPageToQuery);
+            this.addFavoriteValueToBeers(beers);
             this.updateStateWithLoadedBeers(beers);
         }
 
@@ -85,6 +86,7 @@ class BeerContainer extends Component {
     async loadBeersByName(beerName) {
         try {
             let beers = await this.punkBeerClient.getBeersByName(beerName, this.state.nextPageToQuery);
+            this.addFavoriteValueToBeers(beers);
             this.updateStateWithLoadedBeers(beers);
         }
 
@@ -95,6 +97,12 @@ class BeerContainer extends Component {
         finally {
             this.setState({ isLoading: false });
         }
+    }
+
+    addFavoriteValueToBeers = (beers) => {
+        beers.forEach(beer => {
+            beer.isFavorited = this.state.favoritedBeers.has(beer.id) ? true : false
+        })
     }
 
     updateStateWithLoadedBeers = (beers) => {
