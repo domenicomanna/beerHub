@@ -5,17 +5,17 @@ import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
 import Loader from '../../Components/Loader/Loader';
-
+import styles from './BeerContainer.module.css';
 import PunkBeerClient from '../../punkBeerClient';
 import BeerStorage from '../../beerStorage';
 
 class BeerContainer extends Component {
-    
+
     punkBeerClient = new PunkBeerClient();
     beerStorage = new BeerStorage();
 
     state = {
-        hasError: false,
+        hasError: true,
         hasMoreBeers: true,
         beerNameToSearch: '',
         isLoading: true,
@@ -143,21 +143,27 @@ class BeerContainer extends Component {
     }
 
     render() {
-        let loader = this.state.isLoading ? <Loader /> : null;
+        const { isLoading, hasError } = this.state;
+
+        const loader = isLoading ? <Loader /> : null;
+
+        let beerContent = (
+            <>
+                <SearchBar handleInputChange={this.handleBeerNameChange} />
+                <BeerHilightList beers={this.state.beers}
+                    toggleFavorite={this.handleToggleFavorite} />
+            </>
+        );
+
+        if (hasError) beerContent = (
+            <p className = {styles.errorMessage}> There was an error processing your request. 
+            Please try again later </p>
+        );
 
         return (
             <Fragment>
-
                 <Wrapper>
-                    <SearchBar handleInputChange={this.handleBeerNameChange} />
-                </Wrapper>
-
-                <Wrapper>
-                    <BeerHilightList beers={this.state.beers}
-                        toggleFavorite={this.handleToggleFavorite} />
-                </Wrapper>
-
-                <Wrapper>
+                    {beerContent}
                     {loader}
                 </Wrapper>
             </Fragment>
