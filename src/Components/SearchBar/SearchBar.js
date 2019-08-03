@@ -6,7 +6,7 @@ const SearchBar = (props) => {
         <Wrapper>
             <div className={styles.inputWrapper}>
                 <input className={styles.beerInput} onChange={props.handleInputChange}
-                    placeholder="Search for beer"></input>
+                    placeholder="Search for beer..."></input>
             </div>
         </Wrapper>
     );
