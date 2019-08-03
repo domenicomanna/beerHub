@@ -31,7 +31,7 @@
 .button{
     border: none;
     outline: none;
-    cursor: pointer;
+    /* cursor: pointer; */
     background: inherit;
 }
 

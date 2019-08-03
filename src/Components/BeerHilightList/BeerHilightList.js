@@ -22,11 +22,18 @@ function transformBeers(props) {
             description={shortenLength(beer.description, 25)}
             image={beer.image_url}
             isFavorited = {beer.isFavorited} 
-            toggleFavorite = {e => props.toggleFavorite(index)}/>
+            toggleFavorite = {determineCallBackFunction(props.toggleFavorite, index)}/>
     ));
 
 }
 
+function determineCallBackFunction(toggleFavoriteCallBack, beerIndex){
+    if (!toggleFavoriteCallBack) return null;
+
+    return function(){
+        toggleFavoriteCallBack(beerIndex);
+    }
+}
 
 function shortenLength(string, maxLength){
     let shortenedString = string.split(" ");

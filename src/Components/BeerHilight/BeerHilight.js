@@ -2,16 +2,21 @@ import React from 'react';
 import styles from './BeerHilight.module.css';
 
 const BeerHilight = (props) => {
-    // solid star color <i class="fas fa-star"></i>
-    // outlined star color <i class="far fa-star"></i>
-    // let buttonClasses = `fas fa-star ${styles.blue}`
+
+    // solid star color fill: <i class="fas fa-star"></i>
+    // outlined star color: <i class="far fa-star"></i>
     let favoritedState = props.isFavorited ? "fas fa-star" : "far fa-star";
+
+    let favoriteButtonStyles = {
+        cursor: props.toggleFavorite ? "pointer" : "auto"
+    }
 
     return (
         <div className={styles.beerHilight}>
 
             <div className={styles.favoriteWrapper}>
-                <button onClick = {props.toggleFavorite} className={styles.button}>
+                <button style={favoriteButtonStyles} onClick={props.toggleFavorite}
+                    className={styles.button}>
                     <i className={`${favoritedState} ${styles.favoriteIcon}`} />
                 </button>
             </div>
@@ -25,7 +30,7 @@ const BeerHilight = (props) => {
                     <p className={styles.beerDescription}>{props.description}</p>
                 </div>
             </div>
-            
+
         </div>
     );
 }

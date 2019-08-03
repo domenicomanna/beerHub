@@ -6,7 +6,7 @@ import FavoritesContainer from './Containers/FavoritesContainer/FavoritesContain
 function App() {
     return (
         <Layout>
-            {/* <BeerContainer/> */}
+            <BeerContainer/>
             <FavoritesContainer/>
         </Layout>
     );
