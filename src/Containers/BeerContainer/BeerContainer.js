@@ -7,10 +7,12 @@ import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
 import Loader from '../../Components/Loader/Loader';
 
 import PunkBeerClient from '../../punkBeerClient';
+import BeerStorage from '../../beerStorage';
 
 class BeerContainer extends Component {
-
+    
     punkBeerClient = new PunkBeerClient();
+    beerStorage = new BeerStorage();
 
     state = {
         hasError: false,
@@ -19,7 +21,7 @@ class BeerContainer extends Component {
         isLoading: true,
         nextPageToQuery: 1,
         beers: [],
-        favoritedBeers: new Map()
+        favoritedBeers: this.beerStorage.getFavorites()
     }
 
     constructor(props) {
@@ -136,6 +138,8 @@ class BeerContainer extends Component {
             beers: originalBeers,
             favoritedBeers: favoritedBeers
         })
+
+        this.beerStorage.setFavorites(favoritedBeers);
     }
 
     render() {
