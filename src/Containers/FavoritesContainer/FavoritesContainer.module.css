@@ -1,5 +1,12 @@
 .message{
     text-align: center;
-    font-size: 3rem;
-    margin-top: 2rem;
+    margin-top: 5rem;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+@media (min-width: 500px){
+    .message{
+        font-size: 3rem;
+    }
 }

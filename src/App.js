@@ -1,13 +1,14 @@
 import React from 'react';
-import Layout from './Components/Layout/Layout';
+import {Route} from 'react-router-dom';
+import Layout from './Containers/Layout/Layout';
 import BeerContainer from './Containers/BeerContainer/BeerContainer';
 import FavoritesContainer from './Containers/FavoritesContainer/FavoritesContainer';
 
 function App() {
     return (
         <Layout>
-            <BeerContainer/>
-            <FavoritesContainer/>
+            <Route path = "/" exact component = {BeerContainer}/>
+            <Route path = "/favorites" component = {FavoritesContainer}/>
         </Layout>
     );
 }
