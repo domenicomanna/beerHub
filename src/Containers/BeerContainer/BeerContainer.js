@@ -15,7 +15,7 @@ class BeerContainer extends Component {
     beerStorage = new BeerStorage();
 
     state = {
-        hasError: true,
+        hasError: false,
         hasMoreBeers: true,
         beerNameToSearch: '',
         isLoading: true,
