@@ -8,7 +8,7 @@ const BeerHilight = (props) => {
     let favoritedState = props.isFavorited ? "fas fa-star" : "far fa-star";
 
     let favoriteButtonStyles = {
-        cursor: props.toggleFavorite ? "pointer" : "auto"
+        cursor: props.allowFavoriteFunctionality ? "pointer" : "auto"
     }
 
     return (

@@ -11,17 +11,22 @@ class FavoritesContainer extends Component {
         favoritedBeers: this.beerStorage.getFavoritesAsArray()
     }
 
-
     handleBeerClick = (beerIndex) => {
         let beer = this.state.favoritedBeers[beerIndex];
         this.props.history.push(`beers/${beer.id}`);
+    }
+
+    toggleFavorite = (beerIndex, event) => {
+        event.stopPropagation();
     }
 
     render() {
         const { favoritedBeers } = this.state;
         let contentToRender = (
             <BeerHilightList beers={favoritedBeers}
-                handleBeerClick={this.handleBeerClick} />
+                handleBeerClick={this.handleBeerClick} 
+                allowFavoriteFunctionality = {false} 
+                toggleFavorite = {this.toggleFavorite}/>
         );
 
         if (favoritedBeers.length === 0) contentToRender = (

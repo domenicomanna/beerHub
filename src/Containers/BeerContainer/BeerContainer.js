@@ -173,6 +173,7 @@ class BeerContainer extends Component {
                 <SearchBar handleInputChange={this.handleBeerNameChange} />
                 <BeerHilightList beers={this.state.beers}
                     toggleFavorite={this.handleToggleFavorite}
+                    allowFavoriteFunctionality = {true}
                     handleBeerClick={this.handleBeerClick} />
             </>
         );
