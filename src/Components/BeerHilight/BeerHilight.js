@@ -12,8 +12,7 @@ const BeerHilight = (props) => {
     }
 
     return (
-        <div className={styles.beerHilight}>
-
+        <div className={styles.beerHilight} onClick={props.goToFullBeerPage}>
             <div className={styles.favoriteWrapper}>
                 <button style={favoriteButtonStyles} onClick={props.toggleFavorite}
                     className={styles.button}>

@@ -31,8 +31,9 @@
     border-radius: 5px;
 }
 
+
 @media (hover: hover) and (pointer: fine){
-    .active:hover{
+    .link:hover{
         color: #e5e5e5;        
     }
 }
@@ -43,5 +44,9 @@
     }
     .navigationList{
         font-size: 1.4rem;
+    }
+
+    .link{
+        padding: .7rem 1.3rem;
     }
 }

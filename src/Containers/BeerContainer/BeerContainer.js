@@ -31,7 +31,9 @@ class BeerContainer extends Component {
     }
 
     handleBottomOfPageScroll = () => {
-        const { hasError, isLoading, hasMoreBeers } = this.state;
+        const { hasError, isLoading, hasMoreBeers, isMounted } = this.state;
+
+        if (!isMounted) return;
 
         if (hasError || isLoading || !hasMoreBeers) return;
 
@@ -54,6 +56,7 @@ class BeerContainer extends Component {
     }
 
     componentDidMount() {
+        this.setState({isMounted: true})
         this.loadBeersFromCatalog();
     }
 
@@ -122,8 +125,8 @@ class BeerContainer extends Component {
         })
     }
 
-    handleToggleFavorite = (index) => {
-        let beer = clonedeep(this.state.beers[index]);
+    handleToggleFavorite = (beerIndex) => {
+        let beer = clonedeep(this.state.beers[beerIndex]);
         let favoritedBeers = clonedeep(this.state.favoritedBeers);
         let originalBeers = clonedeep(this.state.beers);
 
@@ -132,7 +135,7 @@ class BeerContainer extends Component {
         if (beer.isFavorited) favoritedBeers.set(beer.id, beer);
         else favoritedBeers.delete(beer.id);
 
-        originalBeers[index] = beer;
+        originalBeers[beerIndex] = beer;
 
         this.setState({
             beers: originalBeers,
@@ -140,6 +143,15 @@ class BeerContainer extends Component {
         })
 
         this.beerStorage.setFavorites(favoritedBeers);
+    }
+
+    goToFullBeerPage = (beerIndex) => {
+        let beer = this.state.beers[beerIndex];
+        this.props.history.push(`beers/${beer.id}`);
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleBottomOfPageScroll, false);
     }
 
     render() {
@@ -151,12 +163,13 @@ class BeerContainer extends Component {
             <>
                 <SearchBar handleInputChange={this.handleBeerNameChange} />
                 <BeerHilightList beers={this.state.beers}
-                    toggleFavorite={this.handleToggleFavorite} />
+                    toggleFavorite={this.handleToggleFavorite}
+                    goToFullBeerPage={this.goToFullBeerPage} />
             </>
         );
 
         if (hasError) beerContent = (
-            <p className = {styles.errorMessage}> There was an error processing your request. 
+            <p className={styles.errorMessage}> There was an error processing your request.
             Please try again later </p>
         );
 
