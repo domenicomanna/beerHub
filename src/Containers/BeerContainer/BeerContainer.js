@@ -31,14 +31,12 @@ class BeerContainer extends Component {
         // Creates a reference to the function to call on scroll. The same reference
         // will be used when adding the scroll listener (here) and when removing it (in componentWillUnmount).
         // This ensures that the event listener is actually removed.
-        this.debouncedScrollListener =  debounce(this.handleBottomOfPageScroll, 100)
+        this.debouncedScrollListener = debounce(this.handleBottomOfPageScroll, 100)
         window.addEventListener("scroll", this.debouncedScrollListener);
     }
 
     handleBottomOfPageScroll = () => {
-        const { hasError, isLoading, hasMoreBeers, isMounted } = this.state;
-
-        if (!isMounted) return;
+        const { hasError, isLoading, hasMoreBeers } = this.state;
 
         if (hasError || isLoading || !hasMoreBeers) return;
 
@@ -61,7 +59,6 @@ class BeerContainer extends Component {
     }
 
     componentDidMount() {
-        this.setState({isMounted: true})
         this.loadBeersFromCatalog();
     }
 
@@ -75,11 +72,10 @@ class BeerContainer extends Component {
         }
 
         catch (error) {
-            this.setState({ hasError: true });
-        }
-
-        finally {
-            this.setState({ isLoading: false });
+            if (error.name === 'AbortError') {
+                return;
+            }
+            this.setErrorState();
         }
     }
 
@@ -101,11 +97,10 @@ class BeerContainer extends Component {
         }
 
         catch (error) {
-            this.setState({ hasError: true });
-        }
-
-        finally {
-            this.setState({ isLoading: false });
+            if (error.name === 'AbortError') {
+                return;
+            }
+            this.setErrorState();
         }
     }
 
@@ -126,8 +121,18 @@ class BeerContainer extends Component {
         })
 
         this.setState(currentState => {
-            return { beers: [...currentState.beers, ...beers] };
+            return {
+                beers: [...currentState.beers, ...beers],
+                isLoading: false
+            };
         })
+    }
+
+    setErrorState = () => {
+        this.setState({
+            hasError: true,
+            isLoading: false
+        });
     }
 
     handleToggleFavorite = (beerIndex) => {
@@ -155,7 +160,9 @@ class BeerContainer extends Component {
         this.props.history.push(`beers/${beer.id}`);
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
+        this.loadBeersByName.cancel();
+        this.punkBeerClient.abortFetch();
         window.removeEventListener('scroll', this.debouncedScrollListener);
     }
 
@@ -179,12 +186,10 @@ class BeerContainer extends Component {
         );
 
         return (
-            <Fragment>
-                <Wrapper>
-                    {beerContent}
-                    {loader}
-                </Wrapper>
-            </Fragment>
+            <Wrapper>
+                {beerContent}
+                {loader}
+            </Wrapper>
         );
     }
 }
