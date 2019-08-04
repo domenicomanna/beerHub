@@ -5,9 +5,10 @@ import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
 import Loader from '../../Components/Loader/Loader';
-import styles from './BeerContainer.module.css';
+import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
 import PunkBeerClient from '../../punkBeerClient';
 import BeerStorage from '../../beerStorage';
+
 
 class BeerContainer extends Component {
 
@@ -26,7 +27,7 @@ class BeerContainer extends Component {
 
     constructor(props) {
         super(props)
-        this.loadBeersByName = debounce(this.loadBeersByName, 800);
+        this.loadBeersByName = debounce(this.loadBeersByName, 500);
 
         // Creates a reference to the function to call on scroll. The same reference
         // will be used when adding the scroll listener (here) and when removing it (in componentWillUnmount).
@@ -47,6 +48,12 @@ class BeerContainer extends Component {
     }
 
     determineWhichBeersToLoad = () => {
+
+        // Creates a new request while aborting the previous pending api request (if there is any). 
+        // Without aborting it, it is possible that unexpected data will be loaded. Aborting the previous request
+        // ensures that the resulting data will only come from the next request
+        this.punkBeerClient.createNewBeerRequest();
+        
         const { beerNameToSearch } = this.state;
 
         // if true, the search bar must be empty
@@ -78,6 +85,7 @@ class BeerContainer extends Component {
     }
 
     handleBeerNameChange = (event) => {
+
         // Reset the state 
         this.setState({
             beerNameToSearch: event.target.value,
@@ -131,9 +139,9 @@ class BeerContainer extends Component {
         });
     }
 
-    handleToggleFavorite = (beerIndex, event) => { 
+    handleToggleFavorite = (beerIndex, event) => {
         event.stopPropagation();
-        
+
         let beer = clonedeep(this.state.beers[beerIndex]);
         let favoritedBeers = clonedeep(this.state.favoritedBeers);
         let originalBeers = clonedeep(this.state.beers);
@@ -173,14 +181,14 @@ class BeerContainer extends Component {
                 <SearchBar handleInputChange={this.handleBeerNameChange} />
                 <BeerHilightList beers={this.state.beers}
                     toggleFavorite={this.handleToggleFavorite}
-                    allowFavoriteFunctionality = {true}
+                    allowFavoriteFunctionality={true}
                     handleBeerClick={this.handleBeerClick} />
             </>
         );
 
         if (hasError) beerContent = (
-            <p className={styles.errorMessage}> There was an error processing your request.
-            Please try again later </p>
+            <ErrorMessage> There was an error processing your request.
+            Please try again later </ErrorMessage>
         );
 
         return (

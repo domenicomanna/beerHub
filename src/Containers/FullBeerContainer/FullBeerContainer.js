@@ -3,6 +3,7 @@ import FullBeer from '../../Components/FullBeer/FullBeer';
 import PunkBeerClient from '../../punkBeerClient';
 import Loader from '../../Components/Loader/Loader';
 import Wrapper from '../../Components/Wrapper/Wrapper';
+import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
 
 class FullBeerContainer extends Component {
 
@@ -37,7 +38,10 @@ class FullBeerContainer extends Component {
         const { beer, hasError, isLoading } = this.state;
 
         let loader = isLoading ? <Loader /> : null
-        let errorMessage = hasError ? <p>eroor</p> : null
+        
+        let errorMessage = hasError ? 
+            <ErrorMessage>Oh no! That beer was not found, Try another one!</ErrorMessage> : null
+
         let fullBeer = null;
 
         if (beer != null) {
