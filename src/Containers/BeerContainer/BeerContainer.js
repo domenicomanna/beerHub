@@ -131,7 +131,9 @@ class BeerContainer extends Component {
         });
     }
 
-    handleToggleFavorite = (beerIndex) => { 
+    handleToggleFavorite = (beerIndex, event) => { 
+        event.stopPropagation();
+        
         let beer = clonedeep(this.state.beers[beerIndex]);
         let favoritedBeers = clonedeep(this.state.favoritedBeers);
         let originalBeers = clonedeep(this.state.beers);

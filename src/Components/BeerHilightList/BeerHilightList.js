@@ -23,19 +23,16 @@ function transformBeers(props) {
             description={shortenLength(beer.description, 25)}
             image={beer.image_url}
             isFavorited={beer.isFavorited}
-            toggleFavorite={determineCallBackFunction(props.toggleFavorite, index)}
+            toggleFavorite={(event) => handleCallBack(props.toggleFavorite, index, event)}
             handleBeerClick={() => props.handleBeerClick(index)}
         />
     ));
 
 }
 
-function determineCallBackFunction(toggleFavoriteCallBack, beerIndex) {
-    if (!toggleFavoriteCallBack) return null;
-
-    return function () {
-        toggleFavoriteCallBack(beerIndex);
-    }
+function handleCallBack(toggleFavoriteCallBack, beerIndex, event) {
+    if (!toggleFavoriteCallBack) return;
+    toggleFavoriteCallBack(beerIndex, event);
 }
 
 function shortenLength(string, maxLength) {
