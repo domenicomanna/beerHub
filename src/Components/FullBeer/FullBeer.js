@@ -9,7 +9,7 @@ const FullBeer = (props) => {
                 <h2 className={styles.beerName}>{props.name}</h2>
 
                 <div className={styles.imageWrapper}>
-                    <img className={styles.image} src={props.imageUrl}></img>
+                    <img className={styles.image} src={props.imageUrl} alt = "A beer"></img>
                 </div>
 
                 <div className={styles.description}>

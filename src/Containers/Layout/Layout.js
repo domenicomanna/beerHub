@@ -1,15 +1,17 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Navigation from './Navigation/Navigation';
+import Footer from './Footer/Footer'
 import styles from './Layout.module.css';
 
 const Layout = (props) => {
     return ( 
-        <Fragment>
+        <div className = {styles.pageContent}>
             <Navigation/>
             <main className = {styles.mainContent}>
                 {props.children}
             </main>
-        </Fragment>
+            <Footer/>
+        </div>
     );
 }
     

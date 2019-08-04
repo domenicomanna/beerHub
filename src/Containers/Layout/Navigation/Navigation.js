@@ -13,7 +13,7 @@ const Navigation = () => {
                             <li>
                                 <NavLink className={styles.link}
                                     activeClassName={styles.active}
-                                    to="/">Home</NavLink>
+                                    to="/" exact>Home</NavLink>
                             </li>
                             <li>
                                 <NavLink className={styles.link}

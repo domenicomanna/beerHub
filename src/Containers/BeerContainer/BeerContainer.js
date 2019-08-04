@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import debounce from 'lodash.debounce';
 import clonedeep from 'lodash.clonedeep';
 import Wrapper from '../../Components/Wrapper/Wrapper';

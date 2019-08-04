@@ -38,6 +38,10 @@
     }
 }
 
+.active{
+    text-decoration: underline;
+}
+
 @media(min-width: 500px ){
     .company{
         font-size: 2rem;
