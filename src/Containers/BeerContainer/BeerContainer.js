@@ -27,7 +27,12 @@ class BeerContainer extends Component {
     constructor(props) {
         super(props)
         this.loadBeersByName = debounce(this.loadBeersByName, 800);
-        window.onscroll = debounce(this.handleBottomOfPageScroll, 100)
+
+        // Creates a reference to the function to call on scroll. The same reference
+        // will be used when adding the scroll listener (here) and when removing it (in componentWillUnmount).
+        // This ensures that the event listener is actually removed.
+        this.debouncedScrollListener =  debounce(this.handleBottomOfPageScroll, 100)
+        window.addEventListener("scroll", this.debouncedScrollListener);
     }
 
     handleBottomOfPageScroll = () => {
@@ -151,7 +156,7 @@ class BeerContainer extends Component {
     }
 
     componentWillUnmount(){
-        window.removeEventListener('scroll', this.handleBottomOfPageScroll, false);
+        window.removeEventListener('scroll', this.debouncedScrollListener);
     }
 
     render() {
