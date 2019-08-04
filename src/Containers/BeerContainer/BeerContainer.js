@@ -85,8 +85,7 @@ class BeerContainer extends Component {
     }
 
     handleBeerNameChange = (event) => {
-
-        // Reset the state 
+        // Reset the state every time the input changes
         this.setState({
             beerNameToSearch: event.target.value,
             beers: [],
@@ -146,7 +145,7 @@ class BeerContainer extends Component {
         let favoritedBeers = clonedeep(this.state.favoritedBeers);
         let originalBeers = clonedeep(this.state.beers);
 
-        beer.isFavorited = beer.isFavorited === undefined ? true : !beer.isFavorited;
+        beer.isFavorited = !beer.isFavorited;
 
         if (beer.isFavorited) favoritedBeers.set(beer.id, beer);
         else favoritedBeers.delete(beer.id);
@@ -167,7 +166,9 @@ class BeerContainer extends Component {
     }
 
     componentWillUnmount() {
-        this.punkBeerClient.abortBeerRequest();
+
+        // Abort any pending api requests
+        this.punkBeerClient.abortPreviousRequest();
         window.removeEventListener('scroll', this.debouncedScrollListener);
     }
 
