@@ -24,7 +24,7 @@ function transformBeers(props) {
             image={beer.image_url}
             isFavorited={beer.isFavorited}
             toggleFavorite={determineCallBackFunction(props.toggleFavorite, index)}
-            goToFullBeerPage={() => props.goToFullBeerPage(index)}
+            handleBeerClick={() => props.handleBeerClick(index)}
         />
     ));
 

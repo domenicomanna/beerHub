@@ -72,9 +72,7 @@ class BeerContainer extends Component {
         }
 
         catch (error) {
-            if (error.name === 'AbortError') {
-                return;
-            }
+            if (error.name === 'AbortError') return;
             this.setErrorState();
         }
     }
@@ -97,9 +95,7 @@ class BeerContainer extends Component {
         }
 
         catch (error) {
-            if (error.name === 'AbortError') {
-                return;
-            }
+            if (error.name === 'AbortError') return;
             this.setErrorState();
         }
     }
@@ -135,7 +131,7 @@ class BeerContainer extends Component {
         });
     }
 
-    handleToggleFavorite = (beerIndex) => {
+    handleToggleFavorite = (beerIndex) => { 
         let beer = clonedeep(this.state.beers[beerIndex]);
         let favoritedBeers = clonedeep(this.state.favoritedBeers);
         let originalBeers = clonedeep(this.state.beers);
@@ -155,14 +151,13 @@ class BeerContainer extends Component {
         this.beerStorage.setFavorites(favoritedBeers);
     }
 
-    goToFullBeerPage = (beerIndex) => {
+    handleBeerClick = (beerIndex) => {
         let beer = this.state.beers[beerIndex];
         this.props.history.push(`beers/${beer.id}`);
     }
 
     componentWillUnmount() {
-        this.loadBeersByName.cancel();
-        this.punkBeerClient.abortFetch();
+        this.punkBeerClient.abortBeerRequest();
         window.removeEventListener('scroll', this.debouncedScrollListener);
     }
 
@@ -176,7 +171,7 @@ class BeerContainer extends Component {
                 <SearchBar handleInputChange={this.handleBeerNameChange} />
                 <BeerHilightList beers={this.state.beers}
                     toggleFavorite={this.handleToggleFavorite}
-                    goToFullBeerPage={this.goToFullBeerPage} />
+                    handleBeerClick={this.handleBeerClick} />
             </>
         );
 

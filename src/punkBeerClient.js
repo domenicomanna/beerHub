@@ -24,7 +24,7 @@ class PunkBeerClient {
         return getBeerData(fullUrl);
     }
 
-    abortFetch() {
+    abortBeerRequest() {
         this.abortController.abort();
     }
 }
