@@ -19,7 +19,7 @@ class BeerContainer extends Component {
         hasError: false,
         hasMoreBeers: true,
         beerNameToSearch: '',
-        isLoading: true,
+        isLoading: false,
         nextPageToQuery: 1,
         beers: [],
         favoritedBeers: this.beerStorage.getFavorites()

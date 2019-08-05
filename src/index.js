@@ -7,7 +7,7 @@ import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 let app = (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App/>
     </BrowserRouter>
 )
