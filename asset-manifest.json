@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/domenicomanna/beerHub/static/css/main.362ee2fd.chunk.css",
-    "main.js": "/domenicomanna/beerHub/static/js/main.df0934f2.chunk.js",
-    "main.js.map": "/domenicomanna/beerHub/static/js/main.df0934f2.chunk.js.map",
-    "runtime~main.js": "/domenicomanna/beerHub/static/js/runtime~main.8041eb64.js",
-    "runtime~main.js.map": "/domenicomanna/beerHub/static/js/runtime~main.8041eb64.js.map",
-    "static/css/2.6dadf8a3.chunk.css": "/domenicomanna/beerHub/static/css/2.6dadf8a3.chunk.css",
-    "static/js/2.7619de91.chunk.js": "/domenicomanna/beerHub/static/js/2.7619de91.chunk.js",
-    "static/js/2.7619de91.chunk.js.map": "/domenicomanna/beerHub/static/js/2.7619de91.chunk.js.map",
-    "index.html": "/domenicomanna/beerHub/index.html",
-    "precache-manifest.d05f16fed215cec2c405bfccfc236dce.js": "/domenicomanna/beerHub/precache-manifest.d05f16fed215cec2c405bfccfc236dce.js",
-    "service-worker.js": "/domenicomanna/beerHub/service-worker.js",
-    "static/css/2.6dadf8a3.chunk.css.map": "/domenicomanna/beerHub/static/css/2.6dadf8a3.chunk.css.map",
-    "static/css/main.362ee2fd.chunk.css.map": "/domenicomanna/beerHub/static/css/main.362ee2fd.chunk.css.map",
-    "static/media/font-awesome.min.css": "/domenicomanna/beerHub/static/media/fontawesome-webfont.fee66e71.woff"
+    "main.css": "/beerHub/static/css/main.362ee2fd.chunk.css",
+    "main.js": "/beerHub/static/js/main.4c5b4a01.chunk.js",
+    "main.js.map": "/beerHub/static/js/main.4c5b4a01.chunk.js.map",
+    "runtime~main.js": "/beerHub/static/js/runtime~main.9913dbc4.js",
+    "runtime~main.js.map": "/beerHub/static/js/runtime~main.9913dbc4.js.map",
+    "static/css/2.cc448aa1.chunk.css": "/beerHub/static/css/2.cc448aa1.chunk.css",
+    "static/js/2.7619de91.chunk.js": "/beerHub/static/js/2.7619de91.chunk.js",
+    "static/js/2.7619de91.chunk.js.map": "/beerHub/static/js/2.7619de91.chunk.js.map",
+    "index.html": "/beerHub/index.html",
+    "precache-manifest.f035ad0b4e702fb064bf3b2693f53f3d.js": "/beerHub/precache-manifest.f035ad0b4e702fb064bf3b2693f53f3d.js",
+    "service-worker.js": "/beerHub/service-worker.js",
+    "static/css/2.cc448aa1.chunk.css.map": "/beerHub/static/css/2.cc448aa1.chunk.css.map",
+    "static/css/main.362ee2fd.chunk.css.map": "/beerHub/static/css/main.362ee2fd.chunk.css.map",
+    "static/media/font-awesome.min.css": "/beerHub/static/media/fontawesome-webfont.fee66e71.woff"
   }
 }
