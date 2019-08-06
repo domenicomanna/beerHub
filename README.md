@@ -1,6 +1,6 @@
 BeerHub
 ======
-A React application to browse your favorite beer. 
+A React application to browse your favorite beers. 
 
 [BeerHub](https://domenicomanna.github.io/beerHub/)
 
