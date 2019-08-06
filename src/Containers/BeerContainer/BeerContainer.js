@@ -5,7 +5,7 @@ import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
 import Loader from '../../Components/Loader/Loader';
-import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
+import Message from '../../Components/Message/Message';
 import PunkBeerClient from '../../punkBeerClient';
 import BeerStorage from '../../beerStorage';
 
@@ -188,8 +188,8 @@ class BeerContainer extends Component {
         );
 
         if (hasError) beerContent = (
-            <ErrorMessage> There was an error processing your request.
-            Please try again later </ErrorMessage>
+            <Message> There was an error processing your request.
+            Please try again later </Message>
         );
 
         return (

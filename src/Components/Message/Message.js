@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './ErrorMessage.module.css';
+import styles from './Message.module.css';
 
 const ErrorMessage = (props) => {
     return (  
-        <p className = {styles.errorMessage}>{props.children}</p>
+        <p className = {styles.message}>{props.children}</p>
     );
 }
  

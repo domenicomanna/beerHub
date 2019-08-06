@@ -3,7 +3,7 @@ import FullBeer from '../../Components/FullBeer/FullBeer';
 import PunkBeerClient from '../../punkBeerClient';
 import Loader from '../../Components/Loader/Loader';
 import Wrapper from '../../Components/Wrapper/Wrapper';
-import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
+import Message from '../../Components/Message/Message';
 
 class FullBeerContainer extends Component {
 
@@ -40,7 +40,7 @@ class FullBeerContainer extends Component {
         let loader = isLoading ? <Loader /> : null
         
         let errorMessage = hasError ? 
-            <ErrorMessage>Oh no! That beer was not found, Try another one!</ErrorMessage> : null
+            <Message>Oh no! That beer was not found, Try another one!</Message> : null
 
         let fullBeer = null;
 

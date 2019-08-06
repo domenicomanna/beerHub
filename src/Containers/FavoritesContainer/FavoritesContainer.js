@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './FavoritesContainer.module.css';
 import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
 import BeerStoage from '../../beerStorage';
 import Wrapper from '../../Components/Wrapper/Wrapper';
+import Message from '../../Components/Message/Message';
 
 class FavoritesContainer extends Component {
     beerStorage = new BeerStoage();
@@ -30,7 +30,7 @@ class FavoritesContainer extends Component {
         );
 
         if (favoritedBeers.length === 0) contentToRender = (
-            <p className={styles.message}> You currently have no favorited beers :( </p>
+            <Message> You currently have no favorited beers :( </Message>
         )
 
         return (

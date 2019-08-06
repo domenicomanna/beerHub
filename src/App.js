@@ -4,6 +4,7 @@ import Layout from './Containers/Layout/Layout';
 import BeerContainer from './Containers/BeerContainer/BeerContainer';
 import FavoritesContainer from './Containers/FavoritesContainer/FavoritesContainer';
 import FullBeerContainer from './Containers/FullBeerContainer/FullBeerContainer';
+import Message from './Components/Message/Message';
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/" exact component={BeerContainer} />
                 <Route path="/favorites" component={FavoritesContainer} />
                 <Route path="/beers/:beerId" component={FullBeerContainer} />
+                <Route render = { () => <Message>Oh no! That page was not found.</Message>}/>
             </Switch>
         </Layout>
     );
