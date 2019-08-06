@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/beerHub/static/css/main.362ee2fd.chunk.css",
-    "main.js": "/beerHub/static/js/main.4c5b4a01.chunk.js",
-    "main.js.map": "/beerHub/static/js/main.4c5b4a01.chunk.js.map",
+    "main.css": "/beerHub/static/css/main.dc35c43e.chunk.css",
+    "main.js": "/beerHub/static/js/main.3b8f0c96.chunk.js",
+    "main.js.map": "/beerHub/static/js/main.3b8f0c96.chunk.js.map",
     "runtime~main.js": "/beerHub/static/js/runtime~main.9913dbc4.js",
     "runtime~main.js.map": "/beerHub/static/js/runtime~main.9913dbc4.js.map",
     "static/css/2.cc448aa1.chunk.css": "/beerHub/static/css/2.cc448aa1.chunk.css",
-    "static/js/2.7619de91.chunk.js": "/beerHub/static/js/2.7619de91.chunk.js",
-    "static/js/2.7619de91.chunk.js.map": "/beerHub/static/js/2.7619de91.chunk.js.map",
+    "static/js/2.9370436d.chunk.js": "/beerHub/static/js/2.9370436d.chunk.js",
+    "static/js/2.9370436d.chunk.js.map": "/beerHub/static/js/2.9370436d.chunk.js.map",
     "index.html": "/beerHub/index.html",
-    "precache-manifest.f035ad0b4e702fb064bf3b2693f53f3d.js": "/beerHub/precache-manifest.f035ad0b4e702fb064bf3b2693f53f3d.js",
+    "precache-manifest.3803533ac0a58affd1976a9da318b72f.js": "/beerHub/precache-manifest.3803533ac0a58affd1976a9da318b72f.js",
     "service-worker.js": "/beerHub/service-worker.js",
     "static/css/2.cc448aa1.chunk.css.map": "/beerHub/static/css/2.cc448aa1.chunk.css.map",
-    "static/css/main.362ee2fd.chunk.css.map": "/beerHub/static/css/main.362ee2fd.chunk.css.map",
+    "static/css/main.dc35c43e.chunk.css.map": "/beerHub/static/css/main.dc35c43e.chunk.css.map",
     "static/media/font-awesome.min.css": "/beerHub/static/media/fontawesome-webfont.fee66e71.woff"
   }
 }
