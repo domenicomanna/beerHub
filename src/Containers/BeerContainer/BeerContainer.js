@@ -103,6 +103,8 @@ class BeerContainer extends Component {
 
         catch (error) {
             if (error.name === 'AbortError') return;
+            console.log("hi");
+            
             this.setErrorState();
         }
     }
@@ -126,7 +128,8 @@ class BeerContainer extends Component {
         this.setState(currentState => {
             return {
                 beers: [...currentState.beers, ...beers],
-                isLoading: false
+                isLoading: false,
+                hasError: false
             };
         })
     }
@@ -174,12 +177,12 @@ class BeerContainer extends Component {
 
     render() {
         const { isLoading, hasError } = this.state;
-
+        console.log(isLoading, hasError);
+        
         const loader = isLoading ? <Loader /> : null;
 
         let beerContent = (
             <>
-                <SearchBar handleInputChange={this.handleBeerNameChange} />
                 <BeerHilightList beers={this.state.beers}
                     toggleFavorite={this.handleToggleFavorite}
                     allowFavoriteFunctionality={true}
@@ -187,13 +190,18 @@ class BeerContainer extends Component {
             </>
         );
 
-        if (hasError) beerContent = (
+        if (hasError && !isLoading) beerContent = (
             <Message> There was an error processing your request.
             Please try again later </Message>
         );
 
+        if (this.state.beers.length === 0 && !isLoading) beerContent = (
+          <Message> No beers found :( </Message>
+        )
+
         return (
             <Wrapper>
+                <SearchBar handleInputChange={this.handleBeerNameChange} />
                 {beerContent}
                 {loader}
             </Wrapper>
