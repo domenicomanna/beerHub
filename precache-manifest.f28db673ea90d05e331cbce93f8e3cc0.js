@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "41ae8e036503bb7b0cdeb0b071852fc8",
+    "revision": "bbc5d08342f55334152b3f228afe9200",
     "url": "/beerHub/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/beerHub/static/css/2.cc448aa1.chunk.css"
   },
   {
-    "revision": "c82c7625f514c3b409cb",
-    "url": "/beerHub/static/css/main.dc35c43e.chunk.css"
+    "revision": "aa6df2c97086bbfb14ae",
+    "url": "/beerHub/static/css/main.f88be1a3.chunk.css"
   },
   {
     "revision": "f71179266ce2892744e8",
     "url": "/beerHub/static/js/2.9370436d.chunk.js"
   },
   {
-    "revision": "c82c7625f514c3b409cb",
-    "url": "/beerHub/static/js/main.3b8f0c96.chunk.js"
+    "revision": "aa6df2c97086bbfb14ae",
+    "url": "/beerHub/static/js/main.02427776.chunk.js"
   },
   {
     "revision": "126cb0049fcfa5a7619a",
