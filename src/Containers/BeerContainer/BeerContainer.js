@@ -103,8 +103,6 @@ class BeerContainer extends Component {
 
         catch (error) {
             if (error.name === 'AbortError') return;
-            console.log("hi");
-            
             this.setErrorState();
         }
     }
@@ -177,7 +175,6 @@ class BeerContainer extends Component {
 
     render() {
         const { isLoading, hasError } = this.state;
-        console.log(isLoading, hasError);
         
         const loader = isLoading ? <Loader /> : null;
 
