@@ -1,4 +1,4 @@
-const baseUrl = "https://api.punkapi.com/v2/beers";
+export const baseApiUrl = "https://punkapi-alxiw.amvera.io/v3";
 
 class PunkBeerClient {
     _abortController = new AbortController();
@@ -6,19 +6,19 @@ class PunkBeerClient {
     // pageNumber -> The page number to pull beer information from 
     // note, the first page starts at 1 and the last page is 13 (inclusive)
     getAllBeers(pageNumber) {
-        let fullUrl = `${baseUrl}?page=${pageNumber}`;
+        let fullUrl = `${baseApiUrl}/beers?page=${pageNumber}`;
         return getBeerData(fullUrl, this._abortController);
     }
 
     // beerName -> The name of the beers to search for
     getBeersByName(beerName, pageNumber) {
         beerName = encodeURI(beerName);
-        let fullUrl = `${baseUrl}?beer_name=${beerName}&page=${pageNumber}`;
+        let fullUrl = `${baseApiUrl}/beers?beer_name=${beerName}&page=${pageNumber}`;
         return getBeerData(fullUrl, this._abortController);
     }
 
     getBeerById(beerId) {
-        let fullUrl = `${baseUrl}/${beerId}`;
+        let fullUrl = `${baseApiUrl}/beers/${beerId}`;
         return getBeerData(fullUrl, this._abortController);
     }
 

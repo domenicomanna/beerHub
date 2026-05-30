@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FullBeer from '../../Components/FullBeer/FullBeer';
-import PunkBeerClient from '../../punkBeerClient';
+import PunkBeerClient, { baseApiUrl } from '../../punkBeerClient';
 import Loader from '../../Components/Loader/Loader';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import Message from '../../Components/Message/Message';
@@ -20,8 +20,8 @@ class FullBeerContainer extends Component {
         let beerId = this.props.match.params.beerId;
 
         try {
-            let beers = await this.punkBeerClient.getBeerById(beerId);
-            this.setState({ beer: beers[0] });
+            const beer = await this.punkBeerClient.getBeerById(beerId);
+            this.setState({ beer });
         }
 
         catch (error) {
@@ -46,7 +46,7 @@ class FullBeerContainer extends Component {
 
         if (beer != null) {
             fullBeer = <FullBeer name={beer.name}
-                imageUrl={beer.image_url} description={beer.description}
+                imageUrl={`${baseApiUrl}/images/${beer.image}`} description={beer.description}
                 brewerTips={beer.brewers_tips} foodPairings={beer.food_pairing} />
         }
 

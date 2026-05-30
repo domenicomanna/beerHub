@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './BeerHilightList.module.css';
 import BeerHilight from '../BeerHilight/BeerHilight';
 import Wrapper from '../Wrapper/Wrapper';
+import { baseApiUrl } from '../../punkBeerClient';
 
 const BeerHilightList = (props) => {
 
@@ -21,7 +22,7 @@ function transformBeers(props) {
             id={beer.id}
             name={beer.name}
             description={shortenDescription(beer.description, 25)}
-            image={beer.image_url}
+            image={`${baseApiUrl}/images/${beer.image}`}
             isFavorited={beer.isFavorited}
             toggleFavorite={ event => props.toggleFavorite(index, event)}
             handleBeerClick={() => props.handleBeerClick(index)}
