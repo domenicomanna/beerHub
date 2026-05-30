@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './BeerHilightList.module.css';
-import BeerHilight from '../BeerHilight/BeerHilight';
+import styles from './BeerHighlightList.module.css';
+import BeerHighlight from '../BeerHighlight/BeerHighlight';
 import Wrapper from '../Wrapper/Wrapper';
 import { baseApiUrl } from '../../punkBeerClient';
 
-const BeerHilightList = (props) => {
+const BeerHighlightList = (props) => {
 
     return (
         <Wrapper>
@@ -17,7 +17,7 @@ const BeerHilightList = (props) => {
 
 function transformBeers(props) {
     return props.beers.map((beer, index) => (
-        <BeerHilight
+        <BeerHighlight
             key={beer.id}
             id={beer.id}
             name={beer.name}
@@ -36,9 +36,9 @@ function shortenDescription(string, maxLength) {
     let stringToShorten = string.split(" ");
     stringToShorten.length = stringToShorten.length < maxLength ? stringToShorten.length - 1 : maxLength;
 
-    // if the last word in the array is a puncutation mark, remove it
+    // if the last word in the array is a punctuation mark, remove it
     if (/[.,?/-]/.test(stringToShorten[stringToShorten.length - 1])) stringToShorten.pop();
 
     return stringToShorten.join(" ") + "...";
 }
-export default BeerHilightList;
+export default BeerHighlightList;

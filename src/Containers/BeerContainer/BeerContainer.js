@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 import clonedeep from 'lodash.clonedeep';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import SearchBar from '../../Components/SearchBar/SearchBar';
-import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
+import BeerHighlightList from '../../Components/BeerHighlightList/BeerHighlightList';
 import Loader from '../../Components/Loader/Loader';
 import Message from '../../Components/Message/Message';
 import PunkBeerClient from '../../punkBeerClient';
@@ -180,7 +180,7 @@ class BeerContainer extends Component {
 
         let beerContent = (
             <>
-                <BeerHilightList beers={this.state.beers}
+                <BeerHighlightList beers={this.state.beers}
                     toggleFavorite={this.handleToggleFavorite}
                     allowFavoriteFunctionality={true}
                     handleBeerClick={this.handleBeerClick} />

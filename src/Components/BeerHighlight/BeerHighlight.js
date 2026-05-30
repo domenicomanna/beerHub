@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './BeerHilight.module.css';
+import styles from './BeerHighlight.module.css';
 
-const BeerHilight = (props) => {
+const BeerHighlight = (props) => {
 
     // solid star color fill: <i class="fas fa-star"></i>
     // outlined star color: <i class="far fa-star"></i>
@@ -12,7 +12,7 @@ const BeerHilight = (props) => {
     }
 
     return (
-        <div className={styles.beerHilight} onClick={props.handleBeerClick}>
+        <div className={styles.beerHighlight} onClick={props.handleBeerClick}>
             <div className={styles.favoriteWrapper}>
                 <button style={favoriteButtonStyles} onClick={props.toggleFavorite}
                     className={styles.button}>
@@ -24,7 +24,7 @@ const BeerHilight = (props) => {
                 <img className={styles.beerImage}
                     alt={`Beer: ${props.name}`} src={props.image} />
 
-                <div className={styles.beerHilightDetails}>
+                <div className={styles.beerHighlightDetails}>
                     <p className={styles.beerName}>{props.name}</p>
                     <p className={styles.beerDescription}>{props.description}</p>
                 </div>
@@ -34,4 +34,4 @@ const BeerHilight = (props) => {
     );
 }
 
-export default BeerHilight;
+export default BeerHighlight;

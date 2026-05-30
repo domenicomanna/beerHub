@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import BeerHilightList from '../../Components/BeerHilightList/BeerHilightList';
-import BeerStoage from '../../beerStorage';
+import BeerHighlightList from '../../Components/BeerHighlightList/BeerHighlightList';
+import BeerStorage from '../../beerStorage';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import Message from '../../Components/Message/Message';
 
 class FavoritesContainer extends Component {
-    beerStorage = new BeerStoage();
+    beerStorage = new BeerStorage();
 
     state = {
         favoritedBeers: this.beerStorage.getFavoritesAsArray()
@@ -23,7 +23,7 @@ class FavoritesContainer extends Component {
     render() {
         const { favoritedBeers } = this.state;
         let contentToRender = (
-            <BeerHilightList beers={favoritedBeers}
+            <BeerHighlightList beers={favoritedBeers}
                 handleBeerClick={this.handleBeerClick} 
                 allowFavoriteFunctionality = {false} 
                 toggleFavorite = {this.toggleFavorite}/>
