@@ -1,24 +1,16 @@
-BeerHub
-======
-A React application to browse your favorite beers. 
+# BeerHub
 
-[BeerHub](https://domenicomanna.github.io/beerHub/)
+A web application that allows you to browse BrewDog's beer catalog
 
-Installation
-------
-Install npm if it is not already installed, and then run the following commands on the command line: 
-```
-git clone https://github.com/domenicomanna/beerHub.git
-cd beerHub
-npm start
-```
-Navigate to localhost:3000 on your browser to view the project.
+## Installation / Running locally
 
-Built With
-------
-  * [React](https://reactjs.org/)
-  * CSS
+### Prerequisites
 
-Acknowledgements
-------
-  * [PunkApi](https://punkapi.com/documentation/v2) - Beer data
+- [Node.js](https://nodejs.org/en/) version 24
+
+### Running the app locally
+
+1. Clone the project: `git clone https://github.com/domenicomanna/beerHub.git`
+2. Install dependencies: `npm install`
+3. Start the app: `npm start`
+4. The client app should be listening at http://localhost:5173/beerhub/

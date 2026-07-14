@@ -1,0 +1,64 @@
+.beerHighlight {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  word-wrap: break-word;
+  display: block;
+  color: #000;
+  text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .beerHighlight:hover {
+    background: #e5e5e5;
+  }
+}
+
+.favoriteWrapper {
+  text-align: right;
+}
+
+.favoriteIcon {
+  font-size: 1.5rem;
+  color: #00aff2;
+  transition: 0.3s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .favoriteIcon:hover {
+    transform: scale(1.2);
+  }
+}
+
+.button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: inherit;
+}
+
+.beer {
+  display: flex;
+}
+
+.beerImage {
+  width: 20%;
+}
+
+.beerHighlightDetails {
+  width: 100%;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.beerName {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.beerDescription {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
